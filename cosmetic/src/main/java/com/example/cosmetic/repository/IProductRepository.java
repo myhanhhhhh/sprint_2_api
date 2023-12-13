@@ -25,11 +25,11 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
             "    p.name AS nameProduct, " +
             "    p.price AS priceProduct, " +
             "    c.name AS nameCategory, " +
-            "   MAX(i.name) AS firstImage " +
+            "   MIN(i.name) AS firstImage " +
             " FROM product p " +
             " JOIN category c ON p.id_category = c.id " +
             " JOIN image i ON p.id = i.id_product " +
             " WHERE c.id = :id " +
-            " GROUP BY p.id LIMIT 4 ", nativeQuery = true)
+            " GROUP BY p.id LIMIT 3 ", nativeQuery = true)
     List<IMainDto> findProductByCategory(@Param("id")Integer idCategory);
 }

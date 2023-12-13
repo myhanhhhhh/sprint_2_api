@@ -36,7 +36,7 @@ public class MainController {
     }
 
     @GetMapping("/list")
-    public ResponseEntity<Page<IMainDto>> getAllProduct(@RequestParam(name = "_limit", defaultValue = "12", required = false) int limit,
+    public ResponseEntity<Page<IMainDto>> getAllProduct(@RequestParam(name = "_limit", defaultValue = "8", required = false) int limit,
                                                         @RequestParam(name = "_page", defaultValue = "0", required = false) int page,
                                                         @RequestParam(name = "name_like", defaultValue = "", required = false) String searchName,
                                                         @RequestParam(name = "category", defaultValue = "", required = false) String category,

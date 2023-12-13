@@ -19,11 +19,12 @@ public interface IMainRepository extends JpaRepository<Product, Integer> {
             "  p.name AS nameProduct, " +
             "  p.price AS priceProduct, " +
             "  c.name AS nameCategory, " +
-            "  (SELECT i.name FROM image i WHERE i.id_product = p.id ORDER BY i.id LIMIT 1) AS firstImage " +
-            "  FROM " +
-            "  product p " +
-            "  JOIN " +
-            "  category c ON p.id_category = c.id LIMIT 12 ", nativeQuery = true)
+            "  (SELECT i.name" +
+            "  FROM image i " +
+            "  WHERE i.id_product = p.id " +
+            "  ORDER BY i.id LIMIT 1) AS firstImage " +
+            "  FROM product p " +
+            "  JOIN category c ON p.id_category = c.id LIMIT 8 ", nativeQuery = true)
     List<IMainDto> getOutstandingProduct();
 
     @Query(value = "SELECT " +
@@ -31,7 +32,7 @@ public interface IMainRepository extends JpaRepository<Product, Integer> {
             "    p.name AS nameProduct, " +
             "    p.price AS priceProduct, " +
             "    c.name AS nameCategory, " +
-            "    MAX(i.name) AS firstImage " +
+            "    COALESCE(MIN(i.name),'No Image') AS firstImage " +
             "    FROM product p " +
             "    JOIN category c ON p.id_category = c.id " +
             "    JOIN image i ON p.id = i.id_product " +

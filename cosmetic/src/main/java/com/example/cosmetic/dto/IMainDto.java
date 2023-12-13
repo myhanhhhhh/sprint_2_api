@@ -8,5 +8,6 @@ public interface IMainDto {
     Double getPriceProduct();
 
     String getNameCategory();
+    String getFirstImage();
 
 }

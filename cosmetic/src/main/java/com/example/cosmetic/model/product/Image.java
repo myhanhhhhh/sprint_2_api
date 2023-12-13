@@ -16,6 +16,7 @@ public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(columnDefinition = "LONGTEXT")
     private String name;
 
     @ManyToOne
