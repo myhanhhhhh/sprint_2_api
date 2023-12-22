@@ -19,4 +19,6 @@ public interface ICartService {
     void increaseQuantity(Integer idUser, Integer idProduct);
 
     void decreaseQuantity(Integer idUser, Integer idProduct);
+
+    Integer sumCart(String idUser);
 }

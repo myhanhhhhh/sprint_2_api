@@ -50,15 +50,40 @@ public class CartController {
         }
         Cart cartProduct = cartService.findByIdUserAndIdProduct(idUser, idProduct);
         if (cartProduct != null) {
-            cartService.addQuantity(idUser,idProduct);
-            return new ResponseEntity<>(cartProduct,HttpStatus.OK);
+            cartService.addQuantity(idUser, idProduct);
+            return new ResponseEntity<>(cartProduct, HttpStatus.OK);
         }
         cart.setProduct(product);
         cart.setAppUser(appUser);
         cart.setQuantityOfOrder(quantity);
         cartService.addToCart(cart);
-        return  new ResponseEntity<>(cart,HttpStatus.OK);
+        return new ResponseEntity<>(cart, HttpStatus.OK);
     }
 
+    @PostMapping("/increase")
+    public ResponseEntity<?> increaseQuantity(@RequestParam(name = "idUser") Integer idUser,
+                                              @RequestParam(name = "idProduct") Integer idProduct) {
+        cartService.increaseQuantity(idUser, idProduct);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
+    @PostMapping("/decrease")
+    public ResponseEntity<?> decreaseQuantity(@RequestParam(name = "idUser") Integer idUser,
+                                              @RequestParam(name = "idProduct") Integer idProduct) {
+        cartService.decreaseQuantity(idUser, idProduct);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<Object> deleteProduct(@RequestParam(name = "idUser") Integer idUser,
+                                                @RequestParam(name = "idProduct") Integer idProduct) {
+        cartService.deleteProduct(idUser, idProduct);
+        return new ResponseEntity<>("Bạn đã xóa thành công", HttpStatus.OK);
+    }
+
+    @PostMapping("/sumCart")
+    public ResponseEntity<Integer> sumCart(@RequestParam(name = "idUser") String isUser) {
+        Integer sumCart = cartService.sumCart(isUser);
+        return ResponseEntity.ok(sumCart);
+    }
 }

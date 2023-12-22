@@ -10,4 +10,5 @@ public interface IMainDto {
     String getNameCategory();
     String getFirstImage();
 
+
 }

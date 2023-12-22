@@ -19,6 +19,8 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Integer quantityOfOrder;
+    private Boolean selectPay;
+
 
     @ManyToOne
     @JoinColumn(name = "idProduct", referencedColumnName = "id")

@@ -2,8 +2,8 @@ package com.example.cosmetic.dto;
 
 public interface ICartDto {
 
-    Long getIdUser();
-    Long getIdProduct();
+    Integer getIdUser();
+    Integer getIdProduct();
     String getName();
     Double getPrice();
 

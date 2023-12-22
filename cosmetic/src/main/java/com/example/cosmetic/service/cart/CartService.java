@@ -49,8 +49,13 @@ public class CartService implements ICartService {
         List<ICartDto> cartDto = cartRepository.getAllCart(idUser);
         for (ICartDto cart : cartDto) {
             if (cart.getQuantity() == 0) {
-                cartRepository.deleteCart(idUser,idProduct);
+                cartRepository.deleteCart(idUser, idProduct);
             }
         }
+    }
+
+    @Override
+    public Integer sumCart(String idUser) {
+        return cartRepository.sumCart(idUser);
     }
 }

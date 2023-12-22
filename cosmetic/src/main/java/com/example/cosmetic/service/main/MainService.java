@@ -21,6 +21,7 @@ public class MainService implements IMainService {
 
     @Override
     public Page<IMainDto> findAllProductByName(Pageable pageable, String searchName, String category) {
+
         return mainRepository.getAllProductByCategory(pageable,"%"+searchName+"%", "%" + category + "%" );
     }
 }
