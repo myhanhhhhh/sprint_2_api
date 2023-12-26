@@ -9,3 +9,4 @@ public interface IOrderHistory {
     Integer getQuantityOrder();
     String getTimeOfOrder();
 }
+
