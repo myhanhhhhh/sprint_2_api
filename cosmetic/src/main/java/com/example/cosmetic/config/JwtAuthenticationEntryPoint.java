@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint, Serializable {
     private static final long serialVersionUID = -7858869558953243875L;
 
-// lọc ra những request nào k có Authentication ( không thuộc về hệ thống) -> bắn về SC_UNAUTHORIZED- 401
+// lọc ra những request nào k có Authentication ( k thuộc về hệ thống) -> bắn về SC_UNAUTHORIZED- 401
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
         response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
